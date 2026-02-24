@@ -15,13 +15,17 @@ Projeto end-to-end de **aprovação de crédito** com **EDA estruturado**, **mod
 - **Benchmark de ML:** LogReg, GradientBoosting, RandomForest, XGBoost e LightGBM
 - **Modelo final:** **XGBoost** com alta performance e boa generalização
 - **Threshold por custo:** otimizado com custo assimétrico (FP > FN), resultando em política conservadora
+- **Baixo gap treino–validação–teste** no modelo final → boa generalização (sem sinais relevantes de overfitting)
 
 ---
 
 ## 📊 Resultados (cenário limpo)
 - **ROC-AUC:** ~0.97  
 - **PR-AUC:** ~0.98  
-- **Threshold conservador (0.89):** reduz fortemente **FP (risco)**, com trade-off de aumento de **FN (oportunidade perdida)**
+- **Threshold conservador (0.89):** **FP=118** (risco) | **FN=1793** (oportunidade perdida)
+
+📌 **Notebook:** `notebooks/Loan_status.ipynb`  
+📌 **Relatório (PDF):** `reports/Loan_status.pdf`
 
 ---
 
