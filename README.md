@@ -1,30 +1,53 @@
-# Credit Approval Risk Model (EDA → ML → Cost-Based Threshold)
+# Modelo de Aprovação de Crédito (EDA → ML → Threshold por Custo)
 
-End-to-end credit approval project: robust EDA, leakage-aware modeling, and a cost-optimized conservative decision threshold.
+Projeto end-to-end de **aprovação de crédito** com **EDA estruturado**, **modelagem consciente de leakage** e **calibração de threshold por custo** (política conservadora).
 
-## Project highlights
-- **5-step EDA**: profile, risk, capacity, product and outcome (`loan_status`)
-- **Leakage-aware**: trained a “clean” scenario without `interest_rate` and `defaults_on_file`
-- **Model benchmark**: compared baseline models and tree-based ensembles; **XGBoost** performed best
-- **Decisioning**: calibrated a **conservative threshold (0.89)** using a cost function (FP > FN)
+## 🔎 Visão geral
+- **Alvo:** `loan_status` (1 = **aprovado**, 0 = negado)
+- **Abordagem:** 5 etapas de EDA → benchmark de modelos → modelo final (XGBoost) → decisão operacional via threshold
+- **Decisão:** threshold **0.89** (conservador), priorizando reduzir aprovações indevidas (**FP**) em troca de maior perda de oportunidade (**FN**)
 
-## Results (clean scenario)
-- ROC-AUC ≈ **0.97**
-- PR-AUC ≈ **0.98**
-- Conservative policy (threshold **0.89**): **FP=118**, **FN=1793** (risk vs opportunity trade-off)
+---
 
-## Repo structure
-- `notebooks/` → main notebook
-- `reports/` → PDF report
+## ✅ Principais entregas
+- **EDA em 5 etapas:** perfil, risco, capacidade, produto e desfecho
+- **Cenário “limpo” (sem leakage):** removemos `interest_rate` e `defaults_on_file`
+- **Benchmark de ML:** LogReg, GradientBoosting, RandomForest, XGBoost e LightGBM
+- **Modelo final:** **XGBoost** com alta performance e boa generalização
+- **Threshold por custo:** otimizado com custo assimétrico (FP > FN), resultando em política conservadora
 
-## Dataset
-Dataset is hosted on Kaggle:
-- Realistic Loan Approval Dataset (US & Canada)
+---
 
-## How to run
-1. Download the dataset from Kaggle
-2. Update the dataset path in the notebook (if needed)
-3. Run `notebooks/Loan_status.ipynb`
+## 📊 Resultados (cenário limpo)
+- **ROC-AUC:** ~0.97  
+- **PR-AUC:** ~0.98  
+- **Threshold conservador (0.89):** reduz fortemente **FP (risco)**, com trade-off de aumento de **FN (oportunidade perdida)**
 
-## Notes
-`loan_status=1` means **approved**.
+---
+
+## 🖼️ Visualizações
+### ROC Curves — Benchmark de Modelos
+![ROC Curves](assets/roc_curves.png)
+
+### Escolha de Threshold por Custo
+![Threshold por custo](assets/threshold_cost.png)
+
+### Trade-off: FP vs FN por Threshold
+![FP vs FN](assets/tradeoff_fp_fn.png)
+
+### Matriz de Confusão (Threshold = 0.89)
+![Confusion Matrix](assets/confusion_matrix.png)
+
+---
+
+## 📁 Estrutura do repositório
+- `notebooks/` → notebook principal do projeto
+- `reports/` → relatório em PDF (versão para leitura rápida)
+- `assets/` → imagens usadas no README
+
+---
+
+## 🧠 Dataset
+O dataset está no Kaggle (não versionado no repositório):
+```text
+https://www.kaggle.com/datasets/parthpatel2130/realistic-loan-approval-dataset-us-and-canada/data
