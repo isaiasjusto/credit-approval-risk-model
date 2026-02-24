@@ -27,42 +27,6 @@ Projeto end-to-end de **aprovação de crédito** com **EDA estruturado**, **mod
 📌 **Notebook:** `notebooks/Loan_status.ipynb`  
 📌 **Relatório (PDF):** `reports/Loan_status.pdf`
 
----
-
-## 🖼️ Visualizações
-
-### Etapa 1 — Perfil (distribuição e comportamento)
-![EDA Perfil](assets/eda_1_perfil.png)
-
-### Etapa 2 — Risco (histórico negativo)
-![EDA Risco](assets/eda_2_risco.png)
-
-### Etapa 3 — Capacidade (DTI / comprometimento de renda)
-![EDA Capacidade](assets/eda_3_capacidade.png)
-
-### Etapa 4 — Produto (tipo de produto / intenção)
-![EDA Produto](assets/eda_4_produto.png)
-
-### Etapa 5 — Drivers do desfecho (score e aprovação)
-![EDA Drivers](assets/eda_5_drivers.png)
-
----
-
-### Benchmark de Modelos (ROC Curves)
-![ROC Curves](assets/roc_curves.png)
-
----
-
-### Decisão Operacional (Threshold e trade-off)
-#### Escolha de Threshold por Custo
-![Threshold por custo](assets/threshold_cost.png)
-
-#### Trade-off: FP vs FN por Threshold
-![FP vs FN](assets/tradeoff_fp_fn.png)
-
-#### Matriz de Confusão (Threshold = 0.89)
-![Confusion Matrix](assets/confusion_matrix.png)
-
 
 
 ---
